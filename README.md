@@ -1,4 +1,4 @@
-# test-project
+# home-front
 
 > A Vue.js project
 
