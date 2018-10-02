@@ -21,8 +21,6 @@
 </v-footer>
 
   
-
-    <router-view></router-view>
     
   
 
