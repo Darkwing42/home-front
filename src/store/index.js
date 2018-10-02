@@ -9,7 +9,14 @@ const store = new Vuex.Store({
   namespaced: true,
   state: {
     loading: false,
-    weather: null,
+    weather: {
+      data: false,
+      city_name: "",
+      temp: "",
+      min_temp: "",
+      max_temp: "",
+      icon: ""
+    },
     api_key: "6b21dea1b860e078964f59ba1c075972"
   },
   actions: {
@@ -18,11 +25,10 @@ const store = new Vuex.Store({
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
             city
-          )},de&appid=6b21dea1b860e078964f59ba1c075972`
+          )},de&appid=6b21dea1b860e078964f59ba1c075972&units=metric`
         )
         .then(response => {
           commit("set_weather", response.data);
-          console.log(response.data);
         })
         .catch(error => {
           console.log(error);
@@ -32,7 +38,13 @@ const store = new Vuex.Store({
   },
   mutations: {
     set_weather(state, payload) {
-      state.weather = payload;
+      console.log(payload);
+      state.weather.data = true;
+      state.weather.city_name = payload.name;
+      state.weather.temp = payload.main.temp;
+      state.weather.min_temp = payload.main.temp_min;
+      state.weather.max_temp = payload.main.temp_max;
+      state.weather.icon = payload.weather[0].icon;
     }
   },
   getters: {}

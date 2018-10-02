@@ -3,10 +3,10 @@
 import Vue from "vue";
 import App from "./App";
 import router from "./router";
+import Vuex from "vuex";
 import store from "./store";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-
 
 Vue.use(Vuetify, {
   theme: {
@@ -19,9 +19,6 @@ Vue.use(Vuetify, {
     success: "#4caf50"
   }
 });
-
-Vue.use(Vuetify);
-
 
 Vue.config.productionTip = false;
 

@@ -18,19 +18,20 @@
             label="Stadt"
             v-model="city"
           ></v-text-field>
-      <v-btn style="left: 34%" @click="get_weather">Los!</v-btn>
+      <v-btn style="left: 34%" @click="get_weather" >Los!</v-btn>
       
     </v-card>
   </v-flex>
   <v-flex xs12 sm6>
-    <v-card>
+    <v-card v-if="weather.data">
         <v-toolbar>
-        <v-toolbar-title><b>Stadt: {{ weather.name }}</b></v-toolbar-title>
+        <v-toolbar-title><b>Stadt: {{weather.city_name}} </b></v-toolbar-title>
         </v-toolbar>
         <v-list>
-          <v-list-tile>{{ weather.main.temp }}</v-list-tile>
+          <v-list-tile>Temp: {{weather.temp}} °C</v-list-tile>
+          
         </v-list>
-        {{weather}}
+        
       </v-card>
   </v-flex>
 </v-layout>
