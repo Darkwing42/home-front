@@ -1,4 +1,5 @@
 <template>
+
 <v-container v-if="this.$store.state.loading">
   <v-progress-circular id="loading"
       :size="70"
@@ -9,6 +10,11 @@
 </v-container>
 
 <v-container v-else>
+
+<v-container>
+  
+</v-container>
+
 
 </v-container>
 </template>

@@ -7,6 +7,7 @@ import store from "./store";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 
+
 Vue.use(Vuetify, {
   theme: {
     primary: "#00B8D4",
@@ -18,6 +19,9 @@ Vue.use(Vuetify, {
     success: "#4caf50"
   }
 });
+
+Vue.use(Vuetify);
+
 
 Vue.config.productionTip = false;
 

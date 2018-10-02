@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+
   <v-toolbar class="primary" xs12 sm6 >
   <v-toolbar-title>Home</v-toolbar-title>
   <v-spacer></v-spacer>
@@ -18,6 +19,13 @@
    <v-spacer></v-spacer>
     <div>&copy; {{ new Date().getFullYear() }} J-M. Wagner</div>
 </v-footer>
+
+  
+
+    <router-view></router-view>
+    
+  
+
   </v-app>
 </template>
 
