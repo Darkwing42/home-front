@@ -24,7 +24,14 @@
   </v-flex>
   <v-flex xs12 sm6>
     <v-card>
-    </v-card>
+        <v-toolbar>
+        <v-toolbar-title><b>Stadt: {{ weather.name }}</b></v-toolbar-title>
+        </v-toolbar>
+        <v-list>
+          <v-list-tile>{{ weather.main.temp }}</v-list-tile>
+        </v-list>
+        {{weather}}
+      </v-card>
   </v-flex>
 </v-layout>
 
