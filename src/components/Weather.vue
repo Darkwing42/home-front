@@ -9,8 +9,23 @@
 </v-container>
 
 <v-container v-else>
-<v-layout xs12 sm6>
+<v-layout align-center justify-center column fill-height>
+  <v-flex xs12 sm6>
   
+    <v-card class="input">
+      
+      <v-text-field
+            label="Stadt"
+            v-model="city"
+          ></v-text-field>
+      <v-btn style="left: 34%" @click="get_weather">Los!</v-btn>
+      
+    </v-card>
+  </v-flex>
+  <v-flex xs12 sm6>
+    <v-card>
+    </v-card>
+  </v-flex>
 </v-layout>
 
 </v-container>
@@ -23,7 +38,8 @@ export default {
   name: "Weather",
   data() {
     return {
-      city: "Bochum"
+      time: "",
+      city: ""
     };
   },
 
@@ -35,11 +51,19 @@ export default {
   },
   methods: {
     get_weather: function(event) {
-      this.$store.dispatch("GET_WEATHER", "Bochum");
+      this.$store.dispatch("GET_WEATHER", this.city);
+      this.city = ""
+    },
+    set_time: function() {
+      this.time = new Date()
     }
   }
 };
 </script>
 
 <style>
+.input {
+  width: 300px;
+  heigth: 300px;
+}
 </style>
