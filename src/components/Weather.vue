@@ -10,12 +10,7 @@
 
 <v-container v-else>
 <v-layout xs12 sm6>
-  <v-flex>
-    <v-card>
-    <v-btn v-on:click="get_weather" >Bochum Wetter</v-btn>
-    <p> {{weather}} </p>
-    </v-card>
-  </v-flex>
+  
 </v-layout>
 
 </v-container>
