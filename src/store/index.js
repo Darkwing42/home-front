@@ -15,12 +15,15 @@ const store = new Vuex.Store({
       temp: "",
       min_temp: "",
       max_temp: "",
-      icon: ""
+      icon: "",
+      humidity: "",
+      pressure: ""
     },
     api_key: "6b21dea1b860e078964f59ba1c075972"
   },
   actions: {
     GET_WEATHER({ commit }, city) {
+      commit("setLoading");
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
@@ -29,6 +32,7 @@ const store = new Vuex.Store({
         )
         .then(response => {
           commit("set_weather", response.data);
+          commit("setLoading");
         })
         .catch(error => {
           console.log(error);
@@ -45,6 +49,11 @@ const store = new Vuex.Store({
       state.weather.min_temp = payload.main.temp_min;
       state.weather.max_temp = payload.main.temp_max;
       state.weather.icon = payload.weather[0].icon;
+      state.weather.humidity = payload.main.humidity;
+      state.weather.pressure = payload.main.pressure;
+    },
+    setLoading(state) {
+      state.loading = !state.loading;
     }
   },
   getters: {}

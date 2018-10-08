@@ -15,10 +15,11 @@
     <v-card class="input">
       
       <v-text-field
+            @keyup.enter="get_weather"
             label="Stadt"
             v-model="city"
           ></v-text-field>
-      <v-btn style="left: 34%" @click="get_weather" >Los!</v-btn>
+      <v-btn style="left: 34%" class="primary" @click="get_weather" >Los!</v-btn>
       
     </v-card>
   </v-flex>
@@ -26,9 +27,18 @@
     <v-card v-if="weather.data">
         <v-toolbar>
         <v-toolbar-title><b>Stadt: {{weather.city_name}} </b></v-toolbar-title>
+        
+        <v-toolbar-items>
+          <v-btn flat icon left @click="reloadWeather"><v-icon>autorenew</v-icon></v-btn>
+        </v-toolbar-items>
         </v-toolbar>
         <v-list>
-          <v-list-tile>Temp: {{weather.temp}} °C</v-list-tile>
+          <v-list-tile>aktuelle Temp.: {{weather.temp}} °C <img :src="'http://openweathermap.org/img/w/' + weather.icon + '.png'" alt=""></v-list-tile>
+          <v-list-tile>min. Temp: {{ weather.min_temp}} °C</v-list-tile>
+          <v-list-tile>max. Temp: {{ weather.max_temp}} °C</v-list-tile>
+          <v-list-tile>Feuchtigkeit: {{ weather.humidity }} %</v-list-tile>
+          <v-list-tile>Luftdruck: {{ weather.pressure}} hPa</v-list-tile>
+
           
         </v-list>
         
@@ -64,6 +74,9 @@ export default {
     },
     set_time: function() {
       this.time = new Date()
+    },
+    reloadWeather: function(event) {
+      this.$store.dispatch("GET_WEATHER", this.weather.city_name)
     }
   }
 };
