@@ -8,6 +8,14 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   namespaced: true,
   state: {
+    calendar: {
+      api_key: "AIzaSyC4L6jEKtjRwi3svBSlU_MYr9KiW0H4G8A",
+      error: "",
+      events: []
+    },
+    theme: {
+      primary: "#00B8D4"
+    },
     loading: false,
     weather: {
       data: false,
@@ -22,6 +30,21 @@ const store = new Vuex.Store({
     api_key: "6b21dea1b860e078964f59ba1c075972"
   },
   actions: {
+    GET_EVENTS({ commit, state }) {
+      commit("setLoading");
+      axios
+        .get(
+          "https://www.googleapis.com/calendar/v3/users/me/calendarList?key=AIzaSyC4L6jEKtjRwi3svBSlU_MYr9KiW0H4G8A"
+        )
+        .then(res => {
+          commit("set_Cal_Events", res.data);
+          commit("setLoading");
+        })
+        .catch(error => {
+          console.log(error);
+          state.calendar.error = error;
+        });
+    },
     GET_WEATHER({ commit }, city) {
       commit("setLoading");
       axios
@@ -54,6 +77,9 @@ const store = new Vuex.Store({
     },
     setLoading(state) {
       state.loading = !state.loading;
+    },
+    set_Cal_Events(state, payload) {
+      console.log(payload);
     }
   },
   getters: {}
