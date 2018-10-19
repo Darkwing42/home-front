@@ -8,7 +8,7 @@
     <v-btn flat to="/">Dashboard</v-btn>
     <v-btn flat to="/cal">Calendar </v-btn>
     <v-btn flat to="/weather">Weather</v-btn>
-    <v-btn flat>Todo</v-btn>
+    <v-btn flat to='/todo'>Todo</v-btn>
     <v-btn flat>Shopping</v-btn>
     
   </v-toolbar-items>

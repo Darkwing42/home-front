@@ -33,9 +33,7 @@ const store = new Vuex.Store({
     GET_EVENTS({ commit, state }) {
       commit("setLoading");
       axios
-        .get(
-          "https://www.googleapis.com/calendar/v3/users/me/calendarList?key=AIzaSyC4L6jEKtjRwi3svBSlU_MYr9KiW0H4G8A"
-        )
+        .get()
         .then(res => {
           commit("set_Cal_Events", res.data);
           commit("setLoading");
